@@ -33,12 +33,20 @@ class Personcontroller extends Controller
         $person = Person::create($request->all());
         return new PersonResource($person);
     }
-    public function update()
+    public function update(Person $person, Request $request): PersonResource
     {
-        //
+        $person->update($request->all());
+        return new PersonResource($person);
     }
-    public function destroy()
+    public function destroy(Person $person, Request $request)
     {
-        //
+        $person->delete();
+
+        if ($person->delete())
+        {
+            return response()->json([
+                "message" => "Person deleted"
+            ], 200);
+        }
     }
 }
