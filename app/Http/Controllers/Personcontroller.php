@@ -6,7 +6,7 @@ use App\Http\Resources\PersonResource;
 use Illuminate\Http\Request;
 use App\Models\Person;
 
-class Personcontroller extends Controller
+class PersonController extends Controller
 {
     /**
      * @param Person $person
@@ -19,7 +19,7 @@ class Personcontroller extends Controller
 
     public function index(): PersonResource
     {
-        return new PersonResource(Person::paginate());
+        return new PersonResource(Person::all());
     }
     public function store(Request $request)
     {
