@@ -42,11 +42,8 @@ class Personcontroller extends Controller
     {
         $person->delete();
 
-        if ($person->delete())
-        {
             return response()->json([
                 "message" => "Person deleted"
             ], 200);
-        }
     }
 }
